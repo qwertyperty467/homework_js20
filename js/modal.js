@@ -2,34 +2,32 @@ const openBtn = document.getElementById("open-modal-btn")
 const closeBtn = document.getElementById("modal__close__button")
 const backdrop = document.getElementById("backdrop")
 
-openBtn.addEventListener("click", toggleModal)
-closeBtn.addEventListener("click", toggleModal)
+openBtn.addEventListener("click", onOpenModal)
+closeBtn.addEventListener("click", onCloseModal)
+backdrop.addEventListener("click", onBackdropClick)
 
-function toggleModal() {
-    backdrop.classList.toggle("active")
+function onOpenModal() {
+window.addEventListener("keydown", onEscPress)
+    backdrop.classList.add("active")
 }
 
-// const form = document.querySelector(".form")
+function onCloseModal() {
+    window.removeEventListener("keydown", onEscPress)
+        backdrop.classList.remove("active")
+}
 
-// form.addEventListener("submit", onFormSubmit)
+function onEscPress(event) {
+console.log(event.code); 
+if (event.code === "Escape") {
+    onCloseModal()
+}
+}
 
-// function onFormSubmit(event) {
-//     event.preventDefault()
-//     // console.dir(event.currentTarget.elements.value);
-// }
+function onBackdropClick(event) {
+    if(event.target === event.currentTarget) {
+onCloseModal
+    } else {
 
-// const jsInput = document.querySelector(".js-input")
-// jsInput.addEventListener("focus", onInputFocus)
-// jsInput.addEventListener("blur", onInputBlur)
-
-// function onInputFocus() {
-// console.log(`інпут отримав focus`);
-// }
-
-// function onInputBlur() {
-//     console.log(`інпут втратив focus`);
-// }
-
-// for (const element of object) {
-    
-// }
+    }
+    console.log(event.currentTarget);
+}
